@@ -12,7 +12,7 @@ A complete, self-contained 2D pixel-art parking game for Unity, built for **9:16
 
 | Input | Action |
 | --- | --- |
-| **Steering wheel** (bottom centre) | Spin the rim or drag the hub; 900° lock-to-lock. It stays where you leave it |
+| **Steering wheel** (bottom centre) | Spin the rim or drag the hub; 900° lock-to-lock. It self-centres slowly while rolling and holds still when stopped |
 | **GAS pedal** (bottom right, green) | Accelerate |
 | **BRAKE pedal** (bottom right, red) | Brake, then reverse once stopped |
 | **A / D or Left / Right** | Steer |
@@ -21,7 +21,7 @@ A complete, self-contained 2D pixel-art parking game for Unity, built for **9:16
 | **Enter / Space** | Confirm in menus, next on the win screen |
 | **Esc** | Pause / resume |
 
-Hold the pedals for full throttle, tap them for slow, precise parking speed.
+Hold the pedals for full throttle, tap them for slow, precise parking speed. The car's front tires visibly turn with the steering wheel, and the wheel eases back toward centre while the car is rolling.
 
 ## The lots
 

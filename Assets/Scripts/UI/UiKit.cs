@@ -181,7 +181,7 @@ namespace Parking
                 Art.SteerWheel, Color.white, order);
         }
 
-        public void Tick(InputService input)
+        public void Tick(InputService input, float speed01)
         {
             Held = false;
 
@@ -250,7 +250,13 @@ namespace Parking
                 }
             }
 
-            // No spring-back: the wheel stays where the player left it.
+            // Self-centre slowly only while the car is rolling; at a standstill the wheel stays put.
+            if (!Held && speed01 > 0.08f)
+            {
+                float rate = Mathf.Lerp(12f, 70f, Mathf.Clamp01(speed01));
+                Angle = Mathf.MoveTowards(Angle, 0f, rate * Time.unscaledDeltaTime);
+            }
+
             Value = Mathf.Clamp(-Angle / FullSteerAngle, -1f, 1f);
             if (_wheel != null)
                 _wheel.localRotation = Quaternion.Euler(0f, 0f, Angle);

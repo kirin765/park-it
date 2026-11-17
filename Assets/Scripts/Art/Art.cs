@@ -92,9 +92,9 @@ namespace Parking
         }
 
         // ------------------------------------------------------------------ cars
-        public static Sprite Car(Color32 body, bool stripe)
+        public static Sprite Car(Color32 body, bool stripe, bool looseFrontWheels = false)
         {
-            string key = "car_" + body.r + "_" + body.g + "_" + body.b + (stripe ? "_s" : "");
+            string key = "car_" + body.r + "_" + body.g + "_" + body.b + (stripe ? "_s" : "") + (looseFrontWheels ? "_f" : "");
             if (Cache.TryGetValue(key, out var cached)) return cached;
 
             var p = new Px(24, 44, new Color32(0, 0, 0, 0));
@@ -114,11 +114,14 @@ namespace Parking
             // ground shadow
             p.Ellipse(12.5f, 19.5f, 10.5f, 20.5f, new Color32(0, 0, 0, 58));
 
-            // wheels
+            // wheels (front pair can be left out so they can steer independently)
             Wheel(p, 1, 6, tire, hub);
             Wheel(p, 19, 6, tire, hub);
-            Wheel(p, 1, 30, tire, hub);
-            Wheel(p, 19, 30, tire, hub);
+            if (!looseFrontWheels)
+            {
+                Wheel(p, 1, 30, tire, hub);
+                Wheel(p, 19, 30, tire, hub);
+            }
 
             // shell
             p.RoundRect(3, 2, 18, 40, 6, trim);
@@ -200,6 +203,25 @@ namespace Parking
             var sprite = p.ToSprite("car", 16f);
             Cache[key] = sprite;
             return sprite;
+        }
+
+        public static Sprite CarWheel
+        {
+            get
+            {
+                if (Cache.TryGetValue("carwheel", out var s)) return s;
+                var p = new Px(4, 8, new Color32(0, 0, 0, 0));
+                var tire = Pal.C("#10121a");
+                var hub = Pal.C("#5a6472");
+                p.RoundRect(0, 0, 4, 8, 1, tire);
+                p.FillRect(1, 2, 2, 4, hub);
+                p.FillRect(1, 3, 1, 2, Pal.Light(hub, 0.3f));
+                p.FillRect(1, 1, 2, 1, Pal.C("#2b3140"));
+                p.FillRect(1, 6, 2, 1, Pal.C("#2b3140"));
+                s = p.ToSprite("carwheel", 16f);
+                Cache["carwheel"] = s;
+                return s;
+            }
         }
 
         static void Wheel(Px p, int x, int y, Color32 tire, Color32 hub)

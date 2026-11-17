@@ -308,7 +308,7 @@ namespace Parking
             _t += dt;
             if (Level == null) return;
 
-            _wheel.Tick(App.Inputs);
+            _wheel.Tick(App.Inputs, Level.Car != null ? Level.Car.Speed01 : 0f);
 
             bool gasHeld = _gas.Down || App.Inputs.Gas;
             bool brakeHeld = _brake.Down || App.Inputs.Brake;

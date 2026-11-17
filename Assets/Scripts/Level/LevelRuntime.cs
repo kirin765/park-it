@@ -21,6 +21,8 @@ namespace Parking
 
         GameApp _app;
         SpriteRenderer _carSr;
+        readonly SpriteRenderer[] _frontWheels = new SpriteRenderer[2];
+        float _frontWheelAngle;
         SpriteRenderer _slotGlow;
         SpriteRenderer _pin;
         Vector3 _pinBase;
@@ -173,9 +175,22 @@ namespace Parking
             go.transform.localRotation = Quaternion.Euler(0f, 0f, -Def.StartAng);
 
             var sr = go.AddComponent<SpriteRenderer>();
-            sr.sprite = Art.Car(LevelCatalog.PlayerBody, true);
+            sr.sprite = Art.Car(LevelCatalog.PlayerBody, true, true);
             sr.sortingOrder = 420;
             _carSr = sr;
+
+            // front wheels turn with the steering wheel
+            for (int i = 0; i < 2; i++)
+            {
+                float side = i == 0 ? -1f : 1f;
+                var wgo = new GameObject("front_wheel");
+                wgo.transform.SetParent(go.transform, false);
+                wgo.transform.localPosition = new Vector3(0.56f * side, 0.70f, 0f);
+                var wsr = wgo.AddComponent<SpriteRenderer>();
+                wsr.sprite = Art.CarWheel;
+                wsr.sortingOrder = 421;
+                _frontWheels[i] = wsr;
+            }
 
             Car = go.AddComponent<CarController>();
             Car.Init();
@@ -255,7 +270,20 @@ namespace Parking
 
             // car depth sorting
             if (_carSr != null)
-                _carSr.sortingOrder = 402 - Mathf.RoundToInt(Car.transform.position.y * 8f);
+            {
+                int order = 402 - Mathf.RoundToInt(Car.transform.position.y * 8f);
+                _carSr.sortingOrder = order;
+
+                float target = Car.Steer * 26f;
+                _frontWheelAngle = Mathf.Lerp(_frontWheelAngle, target, 1f - Mathf.Exp(-dt * 14f));
+                for (int i = 0; i < _frontWheels.Length; i++)
+                {
+                    var w = _frontWheels[i];
+                    if (w == null) continue;
+                    w.sortingOrder = order + 1;
+                    w.transform.localRotation = Quaternion.Euler(0f, 0f, -_frontWheelAngle);
+                }
+            }
 
             UpdateStatus();
         }
