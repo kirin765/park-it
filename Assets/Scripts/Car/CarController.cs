@@ -10,12 +10,12 @@ namespace Parking
         public float Steer;
         public System.Action<float> OnBump;
 
-        public const float MaxForward = 6.4f;
-        public const float MaxReverse = 3.6f;
-        const float Accel = 9f;
-        const float BrakeRate = 17f;
-        const float Coast = 4.6f;
-        const float MaxTurn = 138f;
+        public const float MaxForward = 4.0f;
+        public const float MaxReverse = 2.3f;
+        const float Accel = 5.0f;
+        const float BrakeRate = 11.5f;
+        const float Coast = 3.0f;
+        const float MaxTurn = 132f;
 
         float _bumpCooldown;
 

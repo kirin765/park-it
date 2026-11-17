@@ -46,7 +46,7 @@ namespace Parking
                 Name = "FIRST BAY",
                 Short = "BAY ONE",
                 Tag = "PERPENDICULAR",
-                Par = 24f,
+                Par = 34f,
                 Instruction = "PULL INTO THE GLOWING BAY"
             };
             d.Asphalt.Add(new RectDef(0f, -0.2f, 10.6f, 17.2f));
@@ -81,7 +81,7 @@ namespace Parking
                 Name = "T-JUNCTION",
                 Short = "T-SHAPE",
                 Tag = "T PARKING",
-                Par = 32f,
+                Par = 45f,
                 Instruction = "UP, LEFT, THEN INTO THE BAY"
             };
             d.Asphalt.Add(new RectDef(0f, -4.25f, 4.4f, 9.1f));
@@ -123,7 +123,7 @@ namespace Parking
                 Name = "PARALLEL STREET",
                 Short = "PARALLEL",
                 Tag = "SIDEWAYS",
-                Par = 36f,
+                Par = 50f,
                 Hint = "PULL PAST, THEN BACK IN",
                 Instruction = "REVERSE INTO THE GAP"
             };
@@ -162,7 +162,7 @@ namespace Parking
                 Name = "ANGLED SQUEEZE",
                 Short = "ANGLED",
                 Tag = "45 DEGREES",
-                Par = 34f,
+                Par = 48f,
                 Instruction = "TUCK INTO THE ANGLED BAY"
             };
             d.Asphalt.Add(new RectDef(0f, -0.2f, 10.6f, 17.2f));
@@ -201,7 +201,7 @@ namespace Parking
                 Name = "TIGHT GARAGE",
                 Short = "GARAGE",
                 Tag = "INDOOR",
-                Par = 44f,
+                Par = 62f,
                 Hint = "MIND THE PILLARS",
                 Instruction = "WEAVE UP TO THE TOP BAY"
             };
@@ -243,7 +243,7 @@ namespace Parking
                 Name = "REVERSE MASTER",
                 Short = "REVERSE",
                 Tag = "TIGHT FIT",
-                Par = 40f,
+                Par = 56f,
                 Hint = "NOSE OUT, TAIL IN",
                 Instruction = "BACK INTO THE TIGHT BAY"
             };
