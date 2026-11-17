@@ -14,9 +14,10 @@ A complete, self-contained 2D pixel-art parking game for Unity, built for **9:16
 | --- | --- |
 | **Steering wheel** (bottom centre) | Grab and spin left / right to steer only |
 | **GAS pedal** (bottom right, green) | Accelerate |
-| **REV pedal** (bottom right, red) | Brake, then reverse once stopped |
+| **BRAKE pedal** (bottom right, red) | Brake, then reverse once stopped |
 | **A / D or Left / Right** | Steer |
-| **W / S or Up / Down** | Gas / brake + reverse |
+| **W / Up** | Gas (lights the GAS pedal) |
+| **S / Down** | Brake / reverse (lights the BRAKE pedal) |
 | **Enter / Space** | Confirm in menus, next on the win screen |
 | **Esc** | Pause / resume |
 

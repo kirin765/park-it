@@ -67,7 +67,7 @@ namespace Parking
             d.SlotCenter = new Vector2(3.78f, 0f);
             d.SlotAng = 90f;
             d.SlotSize = new Vector2(2.55f, 2.95f);
-            d.Start = new Vector2(0f, -6.6f);
+            d.Start = new Vector2(0f, -6.3f);
             d.Props.Add(new PropDef(-5.0f, 7.6f, PropKind.Tree));
             d.Props.Add(new PropDef(5.0f, -7.9f, PropKind.Tree));
             return d;
@@ -106,7 +106,7 @@ namespace Parking
             d.SlotCenter = new Vector2(-3.95f, 5.95f);
             d.SlotAng = 0f;
             d.SlotSize = new Vector2(2.55f, 2.85f);
-            d.Start = new Vector2(0f, -6.8f);
+            d.Start = new Vector2(0f, -6.3f);
             d.Props.Add(new PropDef(-3.9f, -5.7f, PropKind.Tree));
             d.Props.Add(new PropDef(-3.9f, -1.6f, PropKind.Tree, 0f, 0.9f));
             d.Props.Add(new PropDef(3.9f, -6.2f, PropKind.Tree, 0f, 1.1f));
@@ -144,7 +144,7 @@ namespace Parking
             d.SlotCenter = new Vector2(2.48f, -1.25f);
             d.SlotAng = 0f;
             d.SlotSize = new Vector2(2.02f, 4.2f);
-            d.Start = new Vector2(0.35f, -6.9f);
+            d.Start = new Vector2(0.35f, -6.3f);
 
             d.Props.Add(new PropDef(4.4f, 4.8f, PropKind.Hydrant));
             d.Props.Add(new PropDef(4.5f, -3.4f, PropKind.Bin));
@@ -186,7 +186,7 @@ namespace Parking
             d.SlotCenter = new Vector2(3.35f, 0.3f);
             d.SlotAng = 45f;
             d.SlotSize = new Vector2(2.5f, 2.85f);
-            d.Start = new Vector2(0f, -6.9f);
+            d.Start = new Vector2(0f, -6.3f);
             d.GroundWord = "45";
             d.GroundWordPos = new Vector2(0f, -6.2f);
             d.GroundWordScale = 2.2f;
@@ -231,7 +231,7 @@ namespace Parking
             d.SlotCenter = new Vector2(3.8f, 3.8f);
             d.SlotAng = 90f;
             d.SlotSize = new Vector2(2.25f, 2.85f);
-            d.Start = new Vector2(0f, -6.8f);
+            d.Start = new Vector2(0f, -6.3f);
             return d;
         }
 
@@ -268,7 +268,7 @@ namespace Parking
             d.SlotCenter = new Vector2(-3.05f, 0.6f);
             d.SlotAng = -90f;
             d.SlotSize = new Vector2(2.3f, 2.8f);
-            d.Start = new Vector2(0f, -6.8f);
+            d.Start = new Vector2(0f, -6.3f);
             d.Props.Add(new PropDef(1.2f, -6.4f, PropKind.Cone));
             d.Props.Add(new PropDef(-1.2f, -6.7f, PropKind.Cone));
             d.Props.Add(new PropDef(4.1f, -7.8f, PropKind.Bin));

@@ -269,18 +269,18 @@ namespace Parking
 
             // steering wheel at the bottom centre: grab and spin
             _wheel = new UiSteerWheel();
-            _wheel.Init(Root, new Vector2(0f, -8.94f), 1.0f, 2040);
+            _wheel.Init(Root, new Vector2(0f, -8.84f), 1.2f, 2040);
 
             // gas and brake pedals on the right thumb
-            _gas = Pedal(new Vector2(4.45f, -7.45f), "GAS", Art.ArrowUp, Pal.C("#3f7f57"), 2040);
-            _brake = Pedal(new Vector2(4.45f, -9.0f), "REV", Art.ArrowDown, Pal.C("#a34a42"), 2046);
+            _gas = Pedal(new Vector2(4.32f, -7.45f), "GAS", Art.ArrowUp, Pal.C("#3f7f57"), 2040);
+            _brake = Pedal(new Vector2(4.32f, -9.0f), "BRAKE", Art.ArrowDown, Pal.C("#a34a42"), 2046);
             Buttons.Add(_gas);
             Buttons.Add(_brake);
         }
 
         UiButton Pedal(Vector2 center, string label, Sprite icon, Color color, int order)
         {
-            var b = UiKit.Button(Root, center, new Vector2(1.7f, 1.45f), "", color, 2020, 2, null, null);
+            var b = UiKit.Button(Root, center, new Vector2(2.05f, 1.45f), "", color, 2020, 2, null, null);
             b.PlayClickSound = false;
             UiKit.Image(b.T, new Vector2(0f, 0.24f), new Vector2(0.58f, 0.58f), icon, Color.white, order);
             UiKit.Text(b.T, label, new Vector2(0f, -0.42f), 1, new Color(1f, 1f, 1f, 0.95f), 0.5f, 0.5f, order + 4, false);
@@ -310,9 +310,16 @@ namespace Parking
 
             _wheel.Tick(App.Inputs);
 
+            bool gasHeld = _gas.Down || App.Inputs.Gas;
+            bool brakeHeld = _brake.Down || App.Inputs.Brake;
+
             float throttle = 0f;
-            if (_gas.Down || App.Inputs.Gas) throttle += 1f;
-            if (_brake.Down || App.Inputs.Brake) throttle -= 1f;
+            if (gasHeld) throttle += 1f;
+            if (brakeHeld) throttle -= 1f;
+
+            // keyboard presses light up the matching pedal
+            if (!_gas.Down && App.Inputs.Gas) _gas.Bg.color = Pal.Dark(_gas.Base, 0.18f);
+            if (!_brake.Down && App.Inputs.Brake) _brake.Bg.color = Pal.Dark(_brake.Base, 0.18f);
 
             float steer = 0f;
             if (_wheel.Held)
