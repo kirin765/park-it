@@ -147,12 +147,13 @@ namespace Parking
         }
     }
 
-    /// <summary>A spinnable steering wheel. Grab it anywhere and rotate; it self-centres on release.</summary>
+    /// <summary>A spinnable steering wheel with a 900° lock-to-lock range that holds its angle.</summary>
     public class UiSteerWheel
     {
         public Vector2 Center;
         public float Radius = 1f;
-        public float MaxAngle = 135f;
+        public float MaxAngle = 450f;        // 900° lock-to-lock
+        public float FullSteerAngle = 180f;  // wheel degrees that equal full steering lock
         public float Angle;
         public float Value;
         public bool Held;
@@ -161,6 +162,10 @@ namespace Parking
         int _pid = int.MinValue;
         float _lastAng;
         bool _hasLast;
+        bool _centerGrab;
+        float _dragX;
+        float _dragAngle;
+        const float DragDegreesPerUnit = 150f;
 
         public void Init(Transform parent, Vector2 center, float radius, int order)
         {
@@ -186,28 +191,39 @@ namespace Parking
                 if (p == null || p.JustUp)
                 {
                     _pid = int.MinValue;
+                    _centerGrab = false;
                 }
                 else
                 {
                     Held = true;
                     Vector2 w = UiKit.ToWorld(p.Screen);
-                    Vector2 d = w - Center;
-                    if (d.magnitude > Radius * 0.18f)
+
+                    if (_centerGrab)
                     {
-                        float a = Mathf.Atan2(d.y, d.x) * Mathf.Rad2Deg;
-                        if (_hasLast)
+                        // Grabbed the hub: map a horizontal drag to wheel rotation.
+                        Angle = Mathf.Clamp(_dragAngle - (w.x - _dragX) * DragDegreesPerUnit, -MaxAngle, MaxAngle);
+                    }
+                    else
+                    {
+                        Vector2 d = w - Center;
+                        if (d.magnitude > Radius * 0.18f)
                         {
-                            float delta = Mathf.Clamp(Mathf.DeltaAngle(_lastAng, a), -32f, 32f);
-                            Angle = Mathf.Clamp(Angle + delta, -MaxAngle, MaxAngle);
+                            float a = Mathf.Atan2(d.y, d.x) * Mathf.Rad2Deg;
+                            if (_hasLast)
+                            {
+                                float delta = Mathf.Clamp(Mathf.DeltaAngle(_lastAng, a), -45f, 45f);
+                                Angle = Mathf.Clamp(Angle + delta, -MaxAngle, MaxAngle);
+                            }
+                            _lastAng = a;
+                            _hasLast = true;
                         }
-                        _lastAng = a;
-                        _hasLast = true;
                     }
                 }
             }
             else
             {
                 _hasLast = false;
+                _centerGrab = false;
                 for (int i = 0; i < input.Pointers.Count; i++)
                 {
                     var p = input.Pointers[i];
@@ -218,7 +234,13 @@ namespace Parking
                         _pid = p.Id;
                         Held = true;
                         Vector2 d = w - Center;
-                        if (d.magnitude > Radius * 0.18f)
+                        if (d.magnitude <= Radius * 0.35f)
+                        {
+                            _centerGrab = true;
+                            _dragX = w.x;
+                            _dragAngle = Angle;
+                        }
+                        else
                         {
                             _lastAng = Mathf.Atan2(d.y, d.x) * Mathf.Rad2Deg;
                             _hasLast = true;
@@ -229,7 +251,7 @@ namespace Parking
             }
 
             // No spring-back: the wheel stays where the player left it.
-            Value = Mathf.Clamp(-Angle / MaxAngle, -1f, 1f);
+            Value = Mathf.Clamp(-Angle / FullSteerAngle, -1f, 1f);
             if (_wheel != null)
                 _wheel.localRotation = Quaternion.Euler(0f, 0f, Angle);
         }

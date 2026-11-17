@@ -12,7 +12,7 @@ A complete, self-contained 2D pixel-art parking game for Unity, built for **9:16
 
 | Input | Action |
 | --- | --- |
-| **Steering wheel** (bottom centre) | Grab and spin left / right to steer; it stays where you leave it |
+| **Steering wheel** (bottom centre) | Spin the rim or drag the hub; 900° lock-to-lock. It stays where you leave it |
 | **GAS pedal** (bottom right, green) | Accelerate |
 | **BRAKE pedal** (bottom right, red) | Brake, then reverse once stopped |
 | **A / D or Left / Right** | Steer |
