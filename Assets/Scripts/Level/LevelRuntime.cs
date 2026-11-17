@@ -283,7 +283,7 @@ namespace Parking
                 msg = "STRAIGHTEN UP";
                 col = Pal.Yellow;
             }
-            else if (_inside && _aligned && _speed > 0.5f)
+            else if (_inside && _aligned && _speed > 0.45f)
             {
                 msg = "SLOW DOWN";
                 col = Pal.Yellow;
@@ -331,12 +331,12 @@ namespace Parking
 
             float angDiff = Mathf.Abs(Mathf.DeltaAngle(Car.HeadingDeg, Def.SlotAng));
             if (angDiff > 90f) angDiff = 180f - angDiff;
-            bool aligned = angDiff < 10f;
+            bool aligned = angDiff < 8f;
 
             _inside = inside;
             _aligned = aligned;
 
-            bool ok = inside && aligned && _speed < 0.5f && Started;
+            bool ok = inside && aligned && _speed < 0.45f && Started;
             if (ok)
             {
                 Hold += dt;

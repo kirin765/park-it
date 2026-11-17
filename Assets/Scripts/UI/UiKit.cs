@@ -228,9 +228,7 @@ namespace Parking
                 }
             }
 
-            if (!Held)
-                Angle = Mathf.MoveTowards(Angle, 0f, 320f * Time.unscaledDeltaTime);
-
+            // No spring-back: the wheel stays where the player left it.
             Value = Mathf.Clamp(-Angle / MaxAngle, -1f, 1f);
             if (_wheel != null)
                 _wheel.localRotation = Quaternion.Euler(0f, 0f, Angle);

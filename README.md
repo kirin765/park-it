@@ -12,7 +12,7 @@ A complete, self-contained 2D pixel-art parking game for Unity, built for **9:16
 
 | Input | Action |
 | --- | --- |
-| **Steering wheel** (bottom centre) | Grab and spin left / right to steer only |
+| **Steering wheel** (bottom centre) | Grab and spin left / right to steer; it stays where you leave it |
 | **GAS pedal** (bottom right, green) | Accelerate |
 | **BRAKE pedal** (bottom right, red) | Brake, then reverse once stopped |
 | **A / D or Left / Right** | Steer |
@@ -32,7 +32,7 @@ Hold the pedals for full throttle, tap them for slow, precise parking speed.
 5. **Garage** — indoor concrete floor, pillars and a hazard-striped roller door.
 6. **Reverse** — narrow aisle, cars on both sides: back into the stall.
 
-Park fully inside the glowing bay, straight (within 10°) and almost stopped, then hold still for about half a second. Three stars need a bump-free run under par time; two allow a small margin. Best time, stars and unlocked lots are saved with `PlayerPrefs`.
+Park fully inside the glowing bay, straight (within 8°) and almost stopped, then hold still for about half a second. The target stalls are deliberately snug — only a little wider than the car — so centring it matters. Three stars need a bump-free run under par time; two allow a small margin. Best time, stars and unlocked lots are saved with `PlayerPrefs`.
 
 ## Project layout
 

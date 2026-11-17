@@ -269,7 +269,7 @@ namespace Parking
 
             // steering wheel at the bottom centre: grab and spin
             _wheel = new UiSteerWheel();
-            _wheel.Init(Root, new Vector2(0f, -8.84f), 1.2f, 2040);
+            _wheel.Init(Root, new Vector2(0f, -8.55f), 1.4f, 2040);
 
             // gas and brake pedals on the right thumb
             _gas = Pedal(new Vector2(4.32f, -7.45f), "GAS", Art.ArrowUp, Pal.C("#3f7f57"), 2040);
@@ -322,11 +322,8 @@ namespace Parking
             if (!_brake.Down && App.Inputs.Brake) _brake.Bg.color = Pal.Dark(_brake.Base, 0.18f);
 
             float steer = 0f;
-            if (_wheel.Held)
-            {
-                float x = Mathf.Abs(_wheel.Value) < 0.05f ? 0f : _wheel.Value;
-                steer = x * 1.35f;
-            }
+            float wheelValue = _wheel.Value;
+            if (Mathf.Abs(wheelValue) >= 0.05f) steer = wheelValue * 1.35f;
             if (App.Inputs.Left) steer = -1f;
             else if (App.Inputs.Right) steer = 1f;
 

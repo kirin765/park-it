@@ -66,8 +66,8 @@ namespace Parking
 
             d.SlotCenter = new Vector2(3.78f, 0f);
             d.SlotAng = 90f;
-            d.SlotSize = new Vector2(2.55f, 2.95f);
-            d.Start = new Vector2(0f, -6.3f);
+            d.SlotSize = new Vector2(1.85f, 2.72f);
+            d.Start = new Vector2(0f, -5.85f);
             d.Props.Add(new PropDef(-5.0f, 7.6f, PropKind.Tree));
             d.Props.Add(new PropDef(5.0f, -7.9f, PropKind.Tree));
             return d;
@@ -105,8 +105,8 @@ namespace Parking
 
             d.SlotCenter = new Vector2(-3.95f, 5.95f);
             d.SlotAng = 0f;
-            d.SlotSize = new Vector2(2.55f, 2.85f);
-            d.Start = new Vector2(0f, -6.3f);
+            d.SlotSize = new Vector2(1.82f, 2.7f);
+            d.Start = new Vector2(0f, -5.85f);
             d.Props.Add(new PropDef(-3.9f, -5.7f, PropKind.Tree));
             d.Props.Add(new PropDef(-3.9f, -1.6f, PropKind.Tree, 0f, 0.9f));
             d.Props.Add(new PropDef(3.9f, -6.2f, PropKind.Tree, 0f, 1.1f));
@@ -136,15 +136,15 @@ namespace Parking
             d.Walls.Add(new WallDef(-3.0f, -0.2f, 0.22f, 17.4f));
             d.Walls.Add(new WallDef(3.5f, -0.2f, 0.22f, 17.4f));
 
-            d.Cars.Add(new CarDef(2.52f, 2.2f, 0f, ColorFor(6)));
-            d.Cars.Add(new CarDef(2.52f, -4.7f, 0f, ColorFor(0)));
+            d.Cars.Add(new CarDef(2.52f, 1.9f, 0f, ColorFor(6)));
+            d.Cars.Add(new CarDef(2.52f, -4.35f, 0f, ColorFor(0)));
             d.Cars.Add(new CarDef(-2.28f, 6.4f, 180f, ColorFor(2)));
             d.Cars.Add(new CarDef(-2.28f, -6.6f, 180f, ColorFor(1)));
 
-            d.SlotCenter = new Vector2(2.48f, -1.25f);
+            d.SlotCenter = new Vector2(2.48f, -1.225f);
             d.SlotAng = 0f;
-            d.SlotSize = new Vector2(2.02f, 4.2f);
-            d.Start = new Vector2(0.35f, -6.3f);
+            d.SlotSize = new Vector2(1.78f, 3.45f);
+            d.Start = new Vector2(0.35f, -5.85f);
 
             d.Props.Add(new PropDef(4.4f, 4.8f, PropKind.Hydrant));
             d.Props.Add(new PropDef(4.5f, -3.4f, PropKind.Bin));
@@ -185,8 +185,8 @@ namespace Parking
 
             d.SlotCenter = new Vector2(3.35f, 0.3f);
             d.SlotAng = 45f;
-            d.SlotSize = new Vector2(2.5f, 2.85f);
-            d.Start = new Vector2(0f, -6.3f);
+            d.SlotSize = new Vector2(1.85f, 2.7f);
+            d.Start = new Vector2(0f, -5.85f);
             d.GroundWord = "45";
             d.GroundWordPos = new Vector2(0f, -6.2f);
             d.GroundWordScale = 2.2f;
@@ -222,7 +222,7 @@ namespace Parking
             d.Cars.Add(new CarDef(-3.8f, 0.9f, -90f, ColorFor(3)));
             d.Cars.Add(new CarDef(-3.8f, 3.8f, -90f, ColorFor(8)));
 
-            d.Props.Add(new PropDef(0f, -4.4f, PropKind.Pillar));
+            d.Props.Add(new PropDef(0f, -3.9f, PropKind.Pillar));
             d.Props.Add(new PropDef(0f, -0.9f, PropKind.Pillar));
             d.Props.Add(new PropDef(0f, 2.6f, PropKind.Pillar));
             d.Props.Add(new PropDef(-2.4f, 6.6f, PropKind.Sign, 0f, 1f));
@@ -230,8 +230,8 @@ namespace Parking
 
             d.SlotCenter = new Vector2(3.8f, 3.8f);
             d.SlotAng = 90f;
-            d.SlotSize = new Vector2(2.25f, 2.85f);
-            d.Start = new Vector2(0f, -6.3f);
+            d.SlotSize = new Vector2(1.8f, 2.7f);
+            d.Start = new Vector2(0f, -5.85f);
             return d;
         }
 
@@ -267,8 +267,8 @@ namespace Parking
 
             d.SlotCenter = new Vector2(-3.05f, 0.6f);
             d.SlotAng = -90f;
-            d.SlotSize = new Vector2(2.3f, 2.8f);
-            d.Start = new Vector2(0f, -6.3f);
+            d.SlotSize = new Vector2(1.8f, 2.66f);
+            d.Start = new Vector2(0f, -5.85f);
             d.Props.Add(new PropDef(1.2f, -6.4f, PropKind.Cone));
             d.Props.Add(new PropDef(-1.2f, -6.7f, PropKind.Cone));
             d.Props.Add(new PropDef(4.1f, -7.8f, PropKind.Bin));
